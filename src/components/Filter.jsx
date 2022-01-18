@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Filter = () => {
+const Filter = ({ getDate }) => {
+    const initialState = '';
+
+    const [date, setDate] = useState(initialState);
+
+    const dateFilter = () => {
+        getDate(date);
+    }
+
     return (
         <div>
-            <input type="date" />
-            <button>Filter</button>            
+            <input type="date" onChange={e => setDate(e.target.value)}/>
+            <button onClick={dateFilter}>Filter</button>            
         </div>
     )
 }
