@@ -59,10 +59,14 @@ const TransactionPage = () => {
       }
     }, [dateFilter])
 
+    const setAmountSort = (sorted) => {
+      setTxnsFiltered(sorted);
+    }
+
     return (
         <div>
             <Filter getDate={(d) => setDateFilter(d)} />
-            <TransactionTable txnsFiltered={txnsFiltered} />
+            <TransactionTable txnsFiltered={txnsFiltered} getAmountSort={(sorted) => setAmountSort(sorted)} />
         </div>
     )
 }
