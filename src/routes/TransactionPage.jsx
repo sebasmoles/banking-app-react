@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
 import TransactionTable from '../components/TransactionTable';
 import '../App.css';
@@ -17,7 +17,7 @@ const TransactionPage = () => {
           "id": 2,
           "date": "2022-01-02",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
-          "type": 0,
+          "type": 1,
           "amount": 700,
           "balance": "$12,234.45"
         },
@@ -33,7 +33,7 @@ const TransactionPage = () => {
           "id": 4,
           "date": "2022-01-04",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
-          "type": 0,
+          "type": 1,
           "amount": 10000,
           "balance": "$12,234.45"
         },
@@ -71,4 +71,4 @@ const TransactionPage = () => {
     )
 }
 
-export default TransactionPage
+export default TransactionPage;

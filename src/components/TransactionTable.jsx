@@ -1,5 +1,5 @@
-import React from 'react'
-import TransactionItem from './TransactionItem'
+import React from 'react';
+import TransactionItem from './TransactionItem';
 
 const TransactionTable = ({ txnsFiltered, getAmountSort }) => {
     const onClick = () => {
@@ -30,4 +30,4 @@ const TransactionTable = ({ txnsFiltered, getAmountSort }) => {
     )
 }
 
-export default TransactionTable
+export default TransactionTable;

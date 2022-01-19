@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const Filter = ({ getDate }) => {
     const initialState = '';
@@ -17,4 +17,4 @@ const Filter = ({ getDate }) => {
     )
 }
 
-export default Filter
+export default Filter;
