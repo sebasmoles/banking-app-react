@@ -1,7 +1,7 @@
 import React from 'react'
 import TransactionItem from './TransactionItem'
 
-const TransactionTable = ({ txns }) => {
+const TransactionTable = ({ txnsFiltered }) => {
     return (
         <div>
             <table>
@@ -15,7 +15,7 @@ const TransactionTable = ({ txns }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {txns.map(item => (
+                    {txnsFiltered.map(item => (
                         <TransactionItem item={item} key={item.id} />
                     ))}
                 </tbody>

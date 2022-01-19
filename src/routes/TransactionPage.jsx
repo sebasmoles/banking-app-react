@@ -10,7 +10,7 @@ const TransactionPage = () => {
           "date": "2022-01-01",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
           "type": 0,
-          "amount": 1985.4,
+          "amount": 5000,
           "balance": "$12,234.45"
         },
         {
@@ -18,7 +18,7 @@ const TransactionPage = () => {
           "date": "2022-01-02",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
           "type": 0,
-          "amount": 1985.4,
+          "amount": 700,
           "balance": "$12,234.45"
         },
         {
@@ -26,7 +26,7 @@ const TransactionPage = () => {
           "date": "2022-01-03",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
           "type": 0,
-          "amount": 1985.4,
+          "amount": 1500,
           "balance": "$12,234.45"
         },
         {
@@ -34,7 +34,7 @@ const TransactionPage = () => {
           "date": "2022-01-04",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
           "type": 0,
-          "amount": 1985.4,
+          "amount": 10000,
           "balance": "$12,234.45"
         },
         {
@@ -42,7 +42,7 @@ const TransactionPage = () => {
           "date": "2022-01-05",
           "description": "HACKERBANK INC. DES:CCD+ ID: 33375894749",
           "type": 0,
-          "amount": 1985.4,
+          "amount": 900,
           "balance": "$12,234.45"
         }
     ]
@@ -62,7 +62,7 @@ const TransactionPage = () => {
     return (
         <div>
             <Filter getDate={(d) => setDateFilter(d)} />
-            <TransactionTable txns={txnsFiltered} />
+            <TransactionTable txnsFiltered={txnsFiltered} />
         </div>
     )
 }
