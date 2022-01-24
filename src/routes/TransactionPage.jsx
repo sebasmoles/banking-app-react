@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
 import TransactionTable from '../components/TransactionTable';
-import '../App.css';
+import '../index.css';
 
 const TransactionPage = () => {
     const txns = [
@@ -54,19 +54,20 @@ const TransactionPage = () => {
       setTxnsFiltered(txns);
 
       if(dateFilter) {
-        const newState = txns.filter((t) => t.date === dateFilter);
-        setTxnsFiltered(newState);
+        const filtered = txns.filter((t) => t.date === dateFilter);
+        setTxnsFiltered(filtered);
       }
     }, [dateFilter])
 
-    const setAmountSort = (sorted) => {
+    const sortAmount = () => {
+      const sorted = [...txnsFiltered].sort((a, b) => {return a.amount - b.amount});
       setTxnsFiltered(sorted);
     }
 
     return (
         <div>
             <Filter getDate={(d) => setDateFilter(d)} />
-            <TransactionTable txnsFiltered={txnsFiltered} getAmountSort={(sorted) => setAmountSort(sorted)} />
+            <TransactionTable txnsFiltered={txnsFiltered} sortAmount={sortAmount} />
         </div>
     )
 }

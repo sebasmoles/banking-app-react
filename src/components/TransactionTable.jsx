@@ -1,13 +1,7 @@
 import React from 'react';
 import TransactionItem from './TransactionItem';
 
-const TransactionTable = ({ txnsFiltered, getAmountSort }) => {
-    const onClick = () => {
-        const sorted = [...txnsFiltered].sort((a, b) => {return a.amount - b.amount});
-
-        getAmountSort(sorted);
-    }
-
+const TransactionTable = ({ txnsFiltered, sortAmount }) => {
     return (
         <div>
             <table>
@@ -16,7 +10,7 @@ const TransactionTable = ({ txnsFiltered, getAmountSort }) => {
                         <th>Date</th>
                         <th>Description</th>
                         <th>Type</th>
-                        <th onClick={onClick}>Amount($)</th>
+                        <th onClick={sortAmount}>Amount($)</th>
                         <th>Available Balance</th>
                     </tr>
                 </thead>
