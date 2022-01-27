@@ -11,7 +11,7 @@ const HomePage = () => {
 		setShowDeposit(!showDeposit);
 	};
 
-	const onWithdrawalClick = () => {
+	const onWithdrawClick = () => {
 		if (showDeposit) {
 			setShowDeposit(!showDeposit);
 		}
@@ -26,7 +26,7 @@ const HomePage = () => {
 			</div>
 			<div>
 				<button onClick={onDepositClick}>Deposit</button>
-				<button onClick={onWithdrawalClick}>Withdraw</button>
+				<button onClick={onWithdrawClick}>Withdraw</button>
 			</div>
 			{showDeposit && (
 				<div>
