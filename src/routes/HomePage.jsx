@@ -3,6 +3,21 @@ import React, { useState } from 'react';
 const HomePage = () => {
 	const [showDeposit, setShowDeposit] = useState(false);
 	const [showWithdraw, setShowWithdraw] = useState(false);
+
+	const onDepositClick = () => {
+		if (showWithdraw) {
+			setShowWithdraw(!showWithdraw);
+		}
+		setShowDeposit(!showDeposit);
+	};
+
+	const onWithdrawalClick = () => {
+		if (showDeposit) {
+			setShowDeposit(!showDeposit);
+		}
+		setShowWithdraw(!showWithdraw);
+	};
+
 	return (
 		<>
 			<div>
@@ -10,8 +25,8 @@ const HomePage = () => {
 				<span>$0</span>
 			</div>
 			<div>
-				<button>Deposit</button>
-				<button>Withdraw</button>
+				<button onClick={onDepositClick}>Deposit</button>
+				<button onClick={onWithdrawalClick}>Withdraw</button>
 			</div>
 			{showDeposit && (
 				<div>
