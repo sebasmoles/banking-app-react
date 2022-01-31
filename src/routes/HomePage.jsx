@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NumberFormat from 'react-number-format';
 
 const HomePage = () => {
 	// Total amount
@@ -6,6 +7,9 @@ const HomePage = () => {
 	// Deposit/Withdraw amounts
 	const [amountToDeposit, setAmountToDeposit] = useState('');
 	const [amountToWithdraw, setAmountToWithdraw] = useState('');
+	// Deposit/Withdraw formatted amounts
+	const [formattedDeposit, setFormattedDeposit] = useState('');
+	const [formattedWithdraw, setFormattedWithdraw] = useState('');
 	// Deposit/Withdraw buttons
 	const [showDeposit, setShowDeposit] = useState(false);
 	const [showWithdraw, setShowWithdraw] = useState(false);
@@ -25,23 +29,24 @@ const HomePage = () => {
 		}
 		setShowWithdraw(!showWithdraw);
 	};
-	// Send transaction button
+	// Send transaction events
 	const onDepositSend = () => {
 		if (!amountToDeposit) {
 			alert('Please enter amount to deposit');
 			return;
 		}
 		if (amountToDeposit <= 0) {
-			alert('Please enter amount to deposit that is greater than 0');
+			alert('Please enter an amount to deposit that is greater than 0');
 			return;
 		}
 		if (
 			window.confirm(
-				`Amount to deposit is $${amountToDeposit}. Click OK to confirm and send`
+				`Amount to deposit is ${formattedDeposit}. Click OK to confirm and send`
 			)
 		) {
 			setAmountTotal(amountTotal + amountToDeposit);
 			setAmountToDeposit('');
+			setFormattedDeposit('');
 			setShowDeposit(false);
 		}
 	};
@@ -51,12 +56,12 @@ const HomePage = () => {
 			return;
 		}
 		if (amountToWithdraw <= 0) {
-			alert('Please enter amount to withdraw that is greater than 0');
+			alert('Please enter an amount to withdraw that is greater than 0');
 			return;
 		}
 		if (
 			window.confirm(
-				`Amount to withdraw is $${amountToWithdraw}. Click OK to confirm and send`
+				`Amount to withdraw is ${formattedWithdraw}. Click OK to confirm and send`
 			)
 		) {
 			const newAmount = amountTotal - amountToWithdraw;
@@ -64,6 +69,7 @@ const HomePage = () => {
 			if (newAmount >= 0) {
 				setAmountTotal(newAmount);
 				setAmountToWithdraw('');
+				setFormattedWithdraw('');
 				setShowWithdraw(false);
 				return;
 			}
@@ -76,8 +82,13 @@ const HomePage = () => {
 	return (
 		<>
 			<div>
-				<h2>Balance</h2>
-				<span>${amountTotal}</span>
+				<h2>Available Balance</h2>
+				<NumberFormat
+					value={amountTotal}
+					displayType={'text'}
+					thousandSeparator={true}
+					prefix={'$'}
+				/>
 			</div>
 			<div>
 				<button onClick={onDepositClick}>Deposit</button>
@@ -86,11 +97,21 @@ const HomePage = () => {
 			{showDeposit && (
 				<div>
 					<span>Amount to deposit</span>
-					<input
-						type="number"
+					<NumberFormat
+						thousandsGroupStyle="thousand"
 						placeholder="Amount"
 						value={amountToDeposit}
-						onChange={(e) => setAmountToDeposit(+e.target.value)}
+						prefix="$"
+						decimalSeparator="."
+						displayType="input"
+						type="text"
+						thousandSeparator={true}
+						allowNegative={false}
+						onValueChange={(values) => {
+							const { formattedValue, value } = values;
+							setAmountToDeposit(+value);
+							setFormattedDeposit(formattedValue);
+						}}
 					/>
 					<button onClick={onDepositSend}>Send</button>
 				</div>
@@ -98,11 +119,21 @@ const HomePage = () => {
 			{showWithdraw && (
 				<div>
 					<span>Amount to withdraw</span>
-					<input
-						type="number"
+					<NumberFormat
+						thousandsGroupStyle="thousand"
 						placeholder="Amount"
 						value={amountToWithdraw}
-						onChange={(e) => setAmountToWithdraw(+e.target.value)}
+						prefix="$"
+						decimalSeparator="."
+						displayType="input"
+						type="text"
+						thousandSeparator={true}
+						allowNegative={false}
+						onValueChange={(values) => {
+							const { formattedValue, value } = values;
+							setAmountToWithdraw(+value);
+							setFormattedWithdraw(formattedValue);
+						}}
 					/>
 					<button onClick={onWithdrawSend}>Send</button>
 				</div>
