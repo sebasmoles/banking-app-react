@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
+import { v4 as uuidv4 } from 'uuid';
+import dayjs from 'dayjs';
 
-const HomePage = () => {
-	// Total amount
-	const [amountTotal, setAmountTotal] = useState(0);
+const HomePage = ({ amountTotal, onDeposit, onWithdraw, newTransaction }) => {
 	// Deposit/Withdraw amounts
 	const [amountToDeposit, setAmountToDeposit] = useState('');
 	const [amountToWithdraw, setAmountToWithdraw] = useState('');
@@ -44,7 +44,10 @@ const HomePage = () => {
 				`Amount to deposit is ${formattedDeposit}. Click OK to confirm and send`
 			)
 		) {
-			setAmountTotal(amountTotal + amountToDeposit);
+			const newBalance = amountTotal + amountToDeposit;
+
+			onDeposit(newBalance);
+			createTransaction(newBalance, amountToDeposit, 'Deposit');
 			setAmountToDeposit('');
 			setFormattedDeposit('');
 			setShowDeposit(false);
@@ -64,10 +67,11 @@ const HomePage = () => {
 				`Amount to withdraw is ${formattedWithdraw}. Click OK to confirm and send`
 			)
 		) {
-			const newAmount = amountTotal - amountToWithdraw;
+			const newBalance = amountTotal - amountToWithdraw;
 
-			if (newAmount >= 0) {
-				setAmountTotal(newAmount);
+			if (newBalance >= 0) {
+				onWithdraw(newBalance);
+				createTransaction(newBalance, amountToWithdraw, 'Withdraw');
 				setAmountToWithdraw('');
 				setFormattedWithdraw('');
 				setShowWithdraw(false);
@@ -78,6 +82,18 @@ const HomePage = () => {
 				'You do not have that amount of money available. Please make a deposit'
 			);
 		}
+	};
+	// Create new transaction
+	const createTransaction = (balance, amount, type) => {
+		const transaction = {
+			id: uuidv4(),
+			date: dayjs().format('YYYY-MM-DD'),
+			description: 'BANKING APP INC. DES:CCD+',
+			type: type,
+			amount: amount,
+			balance: balance
+		};
+		newTransaction(transaction);
 	};
 	return (
 		<>
