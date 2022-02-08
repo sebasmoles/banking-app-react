@@ -11,10 +11,10 @@ const TransactionPage = ({ txns }) => {
 		setTxnsFiltered(txns);
 
 		if (dateFilter) {
-			const filtered = txns.filter((t) => t.date === dateFilter);
-			setTxnsFiltered(filtered);
+			const newFilter = txns.filter((t) => t.date === dateFilter);
+			setTxnsFiltered(newFilter);
 		}
-	}, [dateFilter]);
+	}, [dateFilter, txns]);
 
 	return (
 		<div>
