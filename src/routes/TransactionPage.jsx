@@ -16,21 +16,11 @@ const TransactionPage = ({ txns }) => {
 		}
 	}, [dateFilter]);
 
-	const sortAmount = () => {
-		const sorted = [...txnsFiltered].sort((a, b) => {
-			return a.amount - b.amount;
-		});
-		setTxnsFiltered(sorted);
-	};
-
 	return (
 		<div>
 			<Filter getDate={(d) => setDateFilter(d)} />
 			{txnsFiltered.length > 0 ? (
-				<TransactionTable
-					txnsFiltered={txnsFiltered}
-					sortAmount={sortAmount}
-				/>
+				<TransactionTable txnsFiltered={txnsFiltered} />
 			) : (
 				'No transactions to show'
 			)}
