@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
 import TransactionTable from '../components/TransactionTable';
-import '../index.css';
 
 const TransactionPage = ({ txns }) => {
 	const [txnsFiltered, setTxnsFiltered] = useState([]);

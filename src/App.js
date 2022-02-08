@@ -4,7 +4,7 @@ import Header from './components/Header';
 import HomePage from './routes/HomePage';
 import TransactionPage from './routes/TransactionPage';
 import NotFoundPage from './routes/NotFoundPage';
-import './index.css';
+import './scss/index.scss';
 
 function App() {
 	// Total balance amount
