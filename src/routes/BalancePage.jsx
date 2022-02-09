@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
+import '../scss/index.scss';
 
-const HomePage = ({ amountTotal, onDeposit, onWithdraw, newTransaction }) => {
+const BalancePage = ({
+	amountTotal,
+	onDeposit,
+	onWithdraw,
+	newTransaction
+}) => {
 	// Deposit/Withdraw amounts
 	const [amountToDeposit, setAmountToDeposit] = useState('');
 	const [amountToWithdraw, setAmountToWithdraw] = useState('');
@@ -96,22 +102,33 @@ const HomePage = ({ amountTotal, onDeposit, onWithdraw, newTransaction }) => {
 		newTransaction(transaction);
 	};
 	return (
-		<>
-			<div>
-				<h2>Available Balance</h2>
+		<main className="balance">
+			<div className="balance-body">
+				<h2 className="balance-title">Balance</h2>
 				<NumberFormat
 					value={amountTotal}
 					displayType={'text'}
 					thousandSeparator={true}
 					prefix={'$'}
+					className="balance-value"
 				/>
 			</div>
-			<div>
-				<button onClick={onDepositClick}>Deposit</button>
-				<button onClick={onWithdrawClick}>Withdraw</button>
+			<div className="balance-buttons">
+				<button
+					onClick={onDepositClick}
+					className="balance-buttons-deposit"
+				>
+					Deposit
+				</button>
+				<button
+					onClick={onWithdrawClick}
+					className="balance-buttons-withdraw"
+				>
+					Withdraw
+				</button>
 			</div>
 			{showDeposit && (
-				<div>
+				<div className="balance-form">
 					<span>Amount to deposit</span>
 					<NumberFormat
 						thousandsGroupStyle="thousand"
@@ -133,7 +150,7 @@ const HomePage = ({ amountTotal, onDeposit, onWithdraw, newTransaction }) => {
 				</div>
 			)}
 			{showWithdraw && (
-				<div>
+				<div className="balance-form">
 					<span>Amount to withdraw</span>
 					<NumberFormat
 						thousandsGroupStyle="thousand"
@@ -154,8 +171,8 @@ const HomePage = ({ amountTotal, onDeposit, onWithdraw, newTransaction }) => {
 					<button onClick={onWithdrawSend}>Send</button>
 				</div>
 			)}
-		</>
+		</main>
 	);
 };
 
-export default HomePage;
+export default BalancePage;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import HomePage from './routes/HomePage';
+import BalancePage from './routes/BalancePage';
 import TransactionPage from './routes/TransactionPage';
 import NotFoundPage from './routes/NotFoundPage';
 import './scss/index.scss';
@@ -13,13 +13,13 @@ function App() {
 	const [txns, setTxns] = useState([]);
 	return (
 		<Router>
-			<div>
+			<div className="container">
 				<Header />
 				<Routes>
 					<Route
 						path="/"
 						element={
-							<HomePage
+							<BalancePage
 								amountTotal={amountTotal}
 								onDeposit={(a) => setAmountTotal(a)}
 								onWithdraw={(a) => setAmountTotal(a)}

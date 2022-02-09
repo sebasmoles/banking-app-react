@@ -11,7 +11,7 @@ const TransactionTable = ({ txnsFiltered }) => {
 						<th>Description</th>
 						<th>Type</th>
 						<th>Amount</th>
-						<th>Available Balance</th>
+						<th>Balance</th>
 					</tr>
 				</thead>
 				<tbody>

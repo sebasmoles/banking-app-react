@@ -18,3 +18,22 @@ body {
 	color: $black;
 	background-color: $white;
 }
+
+.container {
+	max-width: 500px;
+	margin: 30px auto;
+	overflow: auto;
+	min-height: 300px;
+	padding: 2rem;
+	border-radius: 5px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+button {
+	background-color: $green;
+	font-size: $font-normal;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}

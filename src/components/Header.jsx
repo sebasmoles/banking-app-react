@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../scss/index.scss';
 
 const Header = () => {
 	return (
-		<header className="center">
-			<Link to="/">Banking App</Link>
-			<Link to="/transactions">Transactions</Link>
+		<header className="header">
+			<Link to="/" className="header-logo">
+				Banking App
+			</Link>
+			<Link to="/transactions" className="header-navlink">
+				Transactions
+			</Link>
 		</header>
 	);
 };
