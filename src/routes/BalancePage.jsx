@@ -26,6 +26,7 @@ const BalancePage = ({
 			setAmountToWithdraw('');
 		}
 		setShowDeposit(!showDeposit);
+		setAmountToDeposit('');
 	};
 
 	const onWithdrawClick = () => {
@@ -34,9 +35,12 @@ const BalancePage = ({
 			setAmountToDeposit('');
 		}
 		setShowWithdraw(!showWithdraw);
+		setAmountToWithdraw('');
 	};
 	// Send transaction events
-	const onDepositSend = () => {
+	const onDepositSend = (e) => {
+		e.preventDefault();
+
 		if (!amountToDeposit) {
 			alert('Please enter amount to deposit');
 			return;
@@ -59,7 +63,9 @@ const BalancePage = ({
 			setShowDeposit(false);
 		}
 	};
-	const onWithdrawSend = () => {
+	const onWithdrawSend = (e) => {
+		e.preventDefault();
+
 		if (!amountToWithdraw) {
 			alert('Please enter amount to withdraw');
 			return;
@@ -116,21 +122,28 @@ const BalancePage = ({
 			<div className="balance-buttons">
 				<button
 					onClick={onDepositClick}
-					className="balance-buttons-deposit"
+					className={`balance-buttons-deposit ${
+						showDeposit ? 'show-deposit' : ''
+					}`}
 				>
-					Deposit
+					{showDeposit ? 'Close' : 'Deposit'}
 				</button>
 				<button
 					onClick={onWithdrawClick}
-					className="balance-buttons-withdraw"
+					className={`balance-buttons-withdraw ${
+						showWithdraw ? 'show-withdraw' : ''
+					}`}
 				>
-					Withdraw
+					{showWithdraw ? 'Close' : 'Withdraw'}
 				</button>
 			</div>
 			{showDeposit && (
-				<div className="balance-form">
-					<span>Amount to deposit</span>
+				<form onSubmit={onDepositSend} className="balance-form">
+					<label htmlFor="deposit-input">Amount to deposit</label>
 					<NumberFormat
+						id="deposit-input"
+						className="balance-form-input"
+						autoComplete="off"
 						thousandsGroupStyle="thousand"
 						placeholder="Amount"
 						value={amountToDeposit}
@@ -146,13 +159,16 @@ const BalancePage = ({
 							setFormattedDeposit(formattedValue);
 						}}
 					/>
-					<button onClick={onDepositSend}>Send</button>
-				</div>
+					<button type="submit">Send</button>
+				</form>
 			)}
 			{showWithdraw && (
-				<div className="balance-form">
-					<span>Amount to withdraw</span>
+				<form onSubmit={onWithdrawSend} className="balance-form">
+					<label htmlFor="withdraw-input">Amount to withdraw</label>
 					<NumberFormat
+						id="withdraw-input"
+						className="balance-form-input"
+						autoComplete="off"
 						thousandsGroupStyle="thousand"
 						placeholder="Amount"
 						value={amountToWithdraw}
@@ -168,8 +184,8 @@ const BalancePage = ({
 							setFormattedWithdraw(formattedValue);
 						}}
 					/>
-					<button onClick={onWithdrawSend}>Send</button>
-				</div>
+					<button type="submit">Send</button>
+				</form>
 			)}
 		</main>
 	);
