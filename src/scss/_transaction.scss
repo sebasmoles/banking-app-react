@@ -1,0 +1,32 @@
+.transaction {
+	margin-top: 2rem;
+	text-align: center;
+
+	&-error-message {
+		display: block;
+		margin-top: 4rem;
+	}
+
+	&-table {
+		margin-top: 2rem;
+
+		> table {
+			width: 100%;
+			border: 1px solid rgb(204, 204, 204);
+			border-radius: 5px;
+			border-collapse: collapse;
+			overflow: hidden;
+			box-shadow: 0px 2px 5px 0px #d1d1d1;
+
+			thead {
+				background-color: $green;
+			}
+
+			th,
+			td {
+				border: 1px solid rgb(204, 204, 204);
+				padding: 0.5rem;
+			}
+		}
+	}
+}

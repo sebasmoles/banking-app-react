@@ -16,12 +16,14 @@ const TransactionPage = ({ txns }) => {
 	}, [dateFilter, txns]);
 
 	return (
-		<div>
+		<div className="transaction">
 			<Filter getDate={(d) => setDateFilter(d)} />
 			{txnsFiltered.length > 0 ? (
 				<TransactionTable txnsFiltered={txnsFiltered} />
 			) : (
-				'No transactions to show'
+				<span className="transaction-error-message">
+					No transactions to show
+				</span>
 			)}
 		</div>
 	);

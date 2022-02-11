@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
-import '../scss/index.scss';
 
 const BalancePage = ({
 	amountTotal,
@@ -100,7 +99,7 @@ const BalancePage = ({
 		const transaction = {
 			id: uuidv4(),
 			date: dayjs().format('YYYY-MM-DD'),
-			description: 'BANKING APP INC. DES:CCD+',
+			description: 'BANKING APP DES:CCD+',
 			type: type,
 			amount: amount,
 			balance: balance

@@ -3,7 +3,7 @@ import TransactionItem from './TransactionItem';
 
 const TransactionTable = ({ txnsFiltered }) => {
 	return (
-		<div>
+		<div className="transaction-table">
 			<table>
 				<thead>
 					<tr>
