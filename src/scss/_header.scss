@@ -8,6 +8,10 @@
 		font-weight: 700;
 		color: $black;
 		text-decoration: none;
+
+		@include breakpoint-down(xsmall) {
+			font-size: $font-normal;
+		}
 	}
 
 	&-navlink {

@@ -6,5 +6,15 @@
 		border: 1px solid rgb(204, 204, 204);
 		border-radius: 5px;
 		outline: none;
+
+		@include breakpoint-down(xsmall) {
+			width: 100%;
+		}
+	}
+
+	&-button {
+		@include breakpoint-down(xsmall) {
+			margin-top: 1rem;
+		}
 	}
 }

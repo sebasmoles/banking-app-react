@@ -22,12 +22,16 @@ body {
 .container {
 	max-width: 700px;
 	margin: 30px auto;
-	overflow: auto;
+	overflow: hidden;
 	min-height: 300px;
 	padding: 2rem;
 	border-radius: 5px;
 	box-shadow: 0 10px 20px rgba(124, 124, 124, 0.19),
 		0 6px 6px rgba(126, 126, 126, 0.23);
+
+	@include breakpoint-down(medium) {
+		box-shadow: none;
+	}
 }
 
 button {
