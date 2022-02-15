@@ -45,6 +45,11 @@
 		margin-top: 2rem;
 		width: 100%;
 
+		&-hint {
+			font-size: $font-sm;
+			color: $grey;
+		}
+
 		&-input {
 			font-size: 1rem;
 			margin-top: 1rem;

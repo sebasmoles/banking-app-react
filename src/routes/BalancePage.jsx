@@ -55,11 +55,19 @@ const BalancePage = ({
 		) {
 			const newBalance = amountTotal + amountToDeposit;
 
-			onDeposit(newBalance);
-			createTransaction(newBalance, amountToDeposit, 'Deposit');
-			setAmountToDeposit('');
-			setFormattedDeposit('');
-			setShowDeposit(false);
+			if (newBalance <= 1000000) {
+				// i.e. 1 million dollars max deposit per transaction
+				onDeposit(newBalance);
+				createTransaction(newBalance, amountToDeposit, 'Deposit');
+				setAmountToDeposit('');
+				setFormattedDeposit('');
+				setShowDeposit(false);
+				return;
+			}
+
+			alert(
+				'Deposit amount is over the limits, please try again. Current limit is $1.000.000 USD per transaction'
+			);
 		}
 	};
 	const onWithdrawSend = (e) => {
@@ -139,6 +147,12 @@ const BalancePage = ({
 			{showDeposit && (
 				<form onSubmit={onDepositSend} className="balance-form">
 					<label htmlFor="deposit-input">Amount to deposit</label>
+					<label
+						htmlFor="deposit-input"
+						className="balance-form-hint"
+					>
+						Deposit limit per transaction is USD 1 million
+					</label>
 					<NumberFormat
 						id="deposit-input"
 						className="balance-form-input"
