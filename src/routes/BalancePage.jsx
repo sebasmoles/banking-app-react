@@ -150,7 +150,7 @@ const BalancePage = ({
 						htmlFor="deposit-input"
 						className="balance-form-hint"
 					>
-						Deposit limit per transaction is USD 1 million
+						Deposit limit per transaction is USD 1,000,000
 					</label>
 					<NumberFormat
 						id="deposit-input"
