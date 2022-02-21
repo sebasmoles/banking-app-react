@@ -53,10 +53,9 @@ const BalancePage = ({
 				`Amount to deposit is ${formattedDeposit}. Click OK to confirm and send`
 			)
 		) {
-			const newBalance = amountTotal + amountToDeposit;
-
-			if (newBalance <= 1000000) {
+			if (amountToDeposit <= 1000000) {
 				// i.e. 1 million dollars max deposit per transaction
+				const newBalance = amountTotal + amountToDeposit;
 				onDeposit(newBalance);
 				createTransaction(newBalance, amountToDeposit, 'Deposit');
 				setAmountToDeposit('');
