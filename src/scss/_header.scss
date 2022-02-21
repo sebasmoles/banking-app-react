@@ -9,12 +9,20 @@
 		color: $black;
 		text-decoration: none;
 
+		&:hover {
+			color: $grey;
+		}
+
 		@include breakpoint-down(xsmall) {
 			font-size: $font-normal;
 		}
 	}
 
 	&-navlink {
-		color: $grey;
+		color: $black;
+
+		&:hover {
+			color: $grey;
+		}
 	}
 }
