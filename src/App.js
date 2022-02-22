@@ -9,7 +9,7 @@ import './scss/index.scss';
 
 function App() {
 	// Total balance amount
-	const [amountTotal, setAmountTotal] = useState(0);
+	const [amountTotal, setAmountTotal] = useState(1000);
 	// Transactions history with example data
 	const [txns, setTxns] = useState([
 		{
@@ -33,8 +33,8 @@ function App() {
 			date: '2022-02-14',
 			description: 'BANKING APP DES:CCD+',
 			type: 'Withdraw',
-			amount: 5000,
-			balance: 0
+			amount: 4000,
+			balance: 1000
 		}
 	]);
 	// Sort example data in first load
