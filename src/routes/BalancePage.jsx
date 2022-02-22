@@ -123,6 +123,7 @@ const BalancePage = ({
 					thousandSeparator={true}
 					prefix={'$'}
 					className="balance-value"
+					data-testid="available-balance-value"
 				/>
 			</div>
 			<div className="balance-buttons">
