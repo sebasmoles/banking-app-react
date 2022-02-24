@@ -39,7 +39,7 @@ function App() {
 	]);
 	// Sort example data in first load
 	useEffect(() => {
-		setTxns(txns.reverse());
+		setTxns((txns) => txns.reverse());
 	}, []);
 	return (
 		<Router>
