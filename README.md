@@ -6,7 +6,7 @@ A simple banking app that handles transactions, balances, and records.
 [Sass/SCSS](https://sass-lang.com/), [Cypress](https://www.cypress.io/), and
 [Express.js](https://expressjs.com/).
 
-🚀 It was deployed with Heroku.
+🚀 It was deployed with Heroku:
 [LIVE SITE](https://banking-app-react.herokuapp.com/)
 
 ## Project setup
