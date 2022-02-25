@@ -1,5 +1,9 @@
 .filter {
 	&-date {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		color: $black;
+		background-color: $white;
 		font-family: $font-family;
 		margin-right: 1rem;
 		padding: 0.5rem 1rem;
